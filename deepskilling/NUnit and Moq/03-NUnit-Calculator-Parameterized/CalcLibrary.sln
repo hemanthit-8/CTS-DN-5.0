@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLibrary", "CalcLibrary\CalcLibrary.csproj", "{8FEBBDE5-CB56-473F-9ABB-159F0C93CADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLibrary.Tests", "CalcLibrary.Tests\CalcLibrary.Tests.csproj", "{4263FD47-5629-4321-BFF3-00B8676A35E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FEBBDE5-CB56-473F-9ABB-159F0C93CADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEBBDE5-CB56-473F-9ABB-159F0C93CADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEBBDE5-CB56-473F-9ABB-159F0C93CADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEBBDE5-CB56-473F-9ABB-159F0C93CADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4263FD47-5629-4321-BFF3-00B8676A35E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4263FD47-5629-4321-BFF3-00B8676A35E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4263FD47-5629-4321-BFF3-00B8676A35E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4263FD47-5629-4321-BFF3-00B8676A35E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
