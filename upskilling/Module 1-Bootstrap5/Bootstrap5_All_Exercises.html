@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap 5 Exercises — All Solutions</title>
+
+<!-- Bootstrap 5.3 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+  :root{
+    --code-bg:#0d1117;
+    --code-fg:#c9d1d9;
+    --accent:#7952b3; /* Bootstrap purple */
+  }
+  body{ scroll-behavior:smooth; }
+  /* Sidebar */
+  #sidebar{
+    height:100vh; position:sticky; top:0; overflow-y:auto;
+    border-right:1px solid #e9ecef; padding-top:1rem; background:#f8f9fa;
+  }
+  #sidebar .nav-link{ color:#495057; font-size:.875rem; padding:.25rem .75rem; border-radius:.375rem; }
+  #sidebar .nav-link:hover{ background:#e9ecef; color:#212529; }
+  #sidebar .nav-link.section-title{ font-weight:600; color:#212529; margin-top:.5rem; font-size:.8rem; text-transform:uppercase; letter-spacing:.03em; }
+  /* Section blocks */
+  .ex-section{ scroll-margin-top:1rem; padding:2.5rem 0; border-bottom:1px solid #e9ecef; }
+  .ex-section h2{ color:var(--accent); font-weight:700; }
+  .ex-section h2 .num{ color:#adb5bd; font-weight:400; margin-right:.4rem; }
+  .ex-card{ border:1px solid #e9ecef; border-radius:.75rem; padding:1.25rem 1.5rem; margin-bottom:1.25rem; background:#fff; }
+  .ex-card h5{ font-weight:600; }
+  .ex-card .badge-ex{ font-size:.7rem; }
+  pre.code-block{
+    background:var(--code-bg); color:var(--code-fg); padding:1rem; border-radius:.5rem;
+    font-size:.8rem; overflow-x:auto; margin-top:.75rem; margin-bottom:0;
+  }
+  .demo-frame{ background:#fdfdfe; border:1px dashed #ced4da; border-radius:.5rem; padding:1rem; margin-bottom:.5rem; }
+  .note-box{ background:#fff8e6; border-left:4px solid #ffc107; padding:.75rem 1rem; border-radius:.25rem; font-size:.875rem; }
+  header.hero{ background:linear-gradient(135deg,#7952b3,#563d7c); color:#fff; }
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="80" tabindex="0">
+
+<header class="hero py-5 mb-0">
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-2"><i class="bi bi-bootstrap-fill"></i> Bootstrap 5 Exercises</h1>
+    <p class="lead mb-0">Working solutions for all 19 sections — live demos plus the markup that produces them.</p>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="col-12 col-lg-3 col-xl-2 d-none d-lg-block">
+      <div class="px-2">
+        <h6 class="text-muted px-2 mb-2">Contents</h6>
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item"><a class="nav-link section-title" href="#sec1">1. Setup</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex1-1">1.1 CDN page</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex1-2">1.2 Local files</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec2">2. Structure</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex2-1">2.1 Folder structure</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex2-2">2.2 JS bundle</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec3">3. Grid basics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex3-1">3.1 Stacking cols</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex3-2">3.2 container/row/col</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec4">4. Column layouts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex4-1">4.1 Sidebar + content</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex4-2">4.2 Equal 4 cols</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec5">5. Alignment &amp; reorder</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex5-1">5.1 Center content</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex5-2">5.2 Reorder cols</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec6">6. Flexbox utilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex6-1">6.1 Responsive navbar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex6-2">6.2 Card layout</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec7">7. Typography</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex7-1">7.1 Type utilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex7-2">7.2 Text transform</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec8">8. Forms</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex8-1">8.1 Registration form</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex8-2">8.2 Floating login</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec9">9. Buttons</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex9-1">9.1 Button classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex9-2">9.2 Button groups</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec10">10. Navbars &amp; nav</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex10-1">10.1 Responsive navbar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex10-2">10.2 Tabs / pills</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec11">11. Cards &amp; media</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex11-1">11.1 Profile card</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex11-2">11.2 Media object</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec12">12. Spacing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex12-1">12.1 Margin/padding</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex12-2">12.2 Pricing section</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec13">13. Colors &amp; backgrounds</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex13-1">13.1 Dashboard colors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex13-2">13.2 Gradient</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec14">14. Display &amp; visibility</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex14-1">14.1 d-none / d-md-block</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex14-2">14.2 Responsive sidebar</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec15">15. Borders &amp; shadows</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex15-1">15.1 Border utilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex15-2">15.2 Shadow / rounded-pill</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec16">16. Positioning</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex16-1">16.1 Fixed footer</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex16-2">16.2 Badge overlay</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec17">17. Icons</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex17-1">17.1 Social icons footer</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex17-2">17.2 Icon-only buttons</a></li>
+
+          <li class="nav-item"><a class="nav-link section-title" href="#sec18">18. JS plugins</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex18-1">18.1 Modal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex18-2">18.2 Accordion</a></li>
+          <li class="nav-item"><a class="nav-link section-title" href="#sec19">19. Sass customization</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex19-1">19.1 npm + Sass setup</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ex19-2">19.2 Custom variables</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="col-12 col-lg-9 col-xl-10 py-4 px-3 px-md-5">
+      <!-- ============ SECTION 1 ============ -->
+      <section id="sec1" class="ex-section">
+        <h2><span class="num">1.</span>Setting Up Bootstrap 5</h2>
+
+        <div class="ex-card" id="ex1-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 1.1</span> Basic HTML page linked to Bootstrap 5 via CDN</h5>
+          <p class="text-muted mb-2">The fastest way to start: pull the CSS and JS straight from a CDN, no install required. This very page is built exactly this way.</p>
+          <div class="demo-frame">
+            <div class="alert alert-primary mb-0">This alert, the buttons below, and every component on this page are rendered using only the CDN links shown in the code.</div>
+            <button class="btn btn-success mt-3">It works ✓</button>
+          </div>
+          <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My Bootstrap Page&lt;/title&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container py-5"&gt;
+    &lt;h1&gt;Hello, Bootstrap 5!&lt;/h1&gt;
+    &lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- JS bundle goes just before &lt;/body&gt; --&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex1-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 1.2</span> Project set up with npm or downloaded files</h5>
+          <p class="text-muted mb-2">For real projects you usually don't rely on a CDN. Two common routes:</p>
+          <p class="fw-semibold mb-1">Option A — npm</p>
+          <pre class="code-block"><code>npm init -y
+npm install bootstrap @popperjs/core</code></pre>
+          <p class="fw-semibold mb-1 mt-3">Option B — downloaded files</p>
+          <p class="mb-1">Download the compiled CSS/JS from getbootstrap.com, unzip it next to your HTML file, then reference the local paths instead of the CDN:</p>
+          <pre class="code-block"><code>&lt;link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+...
+&lt;script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+          <div class="note-box mt-3"><i class="bi bi-info-circle"></i> Use local/npm files when you need offline builds, version pinning, or Sass customization (see Section 19). Use the CDN for quick prototypes — like this page.</div>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 2 ============ -->
+      <section id="sec2" class="ex-section">
+        <h2><span class="num">2.</span>Bootstrap Structure and Files</h2>
+
+        <div class="ex-card" id="ex2-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 2.1</span> Structure of the downloaded Bootstrap directory</h5>
+          <p class="text-muted mb-2">A downloaded Bootstrap 5 dist folder looks like this:</p>
+          <pre class="code-block"><code>bootstrap-5.3.3-dist/
+├── css/
+│   ├── bootstrap.css            # full, unminified CSS
+│   ├── bootstrap.min.css        # minified, production-ready CSS
+│   └── bootstrap-grid.css       # grid system only, no components
+├── js/
+│   ├── bootstrap.js             # plugins, needs Popper separately
+│   ├── bootstrap.bundle.js      # plugins + Popper bundled in
+│   └── bootstrap.bundle.min.js  # minified version, used most often
+└── icons/                       # only present if Bootstrap Icons added separately
+    ├── bootstrap-icons.css
+    └── fonts/</code></pre>
+          <table class="table table-sm table-bordered mt-3">
+            <thead class="table-light"><tr><th>Folder</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><code>css/</code></td><td>Stylesheets that provide the grid, typography, and component styling.</td></tr>
+              <tr><td><code>js/</code></td><td>JavaScript behaviour for interactive components (modals, dropdowns, carousels, tooltips...).</td></tr>
+              <tr><td><code>icons/</code></td><td>Optional icon font/SVG set (Bootstrap Icons), kept as a separate package from core Bootstrap.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ex-card" id="ex2-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 2.2</span> Include Bootstrap's JS plugins via bootstrap.bundle.min.js</h5>
+          <p class="text-muted mb-2"><code>bootstrap.bundle.min.js</code> bundles Popper, so dropdowns, tooltips, and popovers work with one script tag.</p>
+          <div class="demo-frame">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Open dropdown
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;!-- right before &lt;/body&gt; --&gt;
+&lt;script src="js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+
+&lt;div class="dropdown"&gt;
+  &lt;button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"&gt;
+    Open dropdown
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 3 ============ -->
+      <section id="sec3" class="ex-section">
+        <h2><span class="num">3.</span>Fundamentals of Responsive Grid Layout</h2>
+
+        <div class="ex-card" id="ex3-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 3.1</span> Stacks on mobile, 2-per-row on tablet, 3-per-row on desktop</h5>
+          <p class="text-muted mb-2">Resize your browser to see the breakpoints kick in.</p>
+          <div class="demo-frame">
+            <div class="container">
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4"><div class="bg-primary text-white text-center rounded py-3">Box 1</div></div>
+                <div class="col-12 col-md-6 col-lg-4"><div class="bg-primary text-white text-center rounded py-3">Box 2</div></div>
+                <div class="col-12 col-md-6 col-lg-4"><div class="bg-primary text-white text-center rounded py-3">Box 3</div></div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="container"&gt;
+  &lt;div class="row g-3"&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Box 1&lt;/div&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Box 2&lt;/div&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Box 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex3-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 3.2</span> .container, .row, and .col-* used together</h5>
+          <div class="demo-frame">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col"><div class="bg-info bg-opacity-25 text-center rounded py-3">col (auto)</div></div>
+                <div class="col"><div class="bg-info bg-opacity-25 text-center rounded py-3">col (auto)</div></div>
+                <div class="col-auto"><div class="bg-warning bg-opacity-50 text-center rounded py-3 px-4">col-auto (content width)</div></div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="container-fluid"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col"&gt;col (auto)&lt;/div&gt;
+    &lt;div class="col"&gt;col (auto)&lt;/div&gt;
+    &lt;div class="col-auto"&gt;col-auto (content width)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <div class="note-box mt-3"><i class="bi bi-info-circle"></i> <code>.container</code> = fixed max-width per breakpoint. <code>.container-fluid</code> = always 100% width. <code>.row</code> creates a flex container with negative margins to offset column padding (gutters).</div>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 4 ============ -->
+      <section id="sec4" class="ex-section">
+        <h2><span class="num">4.</span>Column Layouts and Grid Classes</h2>
+
+        <div class="ex-card" id="ex4-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 4.1</span> Sidebar (col-md-3) + content area (col-md-9)</h5>
+          <div class="demo-frame">
+            <div class="row g-2">
+              <div class="col-12 col-md-3"><div class="bg-dark text-white rounded p-3">Sidebar<br><small>col-md-3</small></div></div>
+              <div class="col-12 col-md-9"><div class="bg-light border rounded p-3">Main content area<br><small class="text-muted">col-md-9</small></div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row"&gt;
+  &lt;div class="col-12 col-md-3"&gt;Sidebar&lt;/div&gt;
+  &lt;div class="col-12 col-md-9"&gt;Main content area&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex4-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 4.2</span> Four equal-width columns (col-sm-3)</h5>
+          <div class="demo-frame">
+            <div class="row g-2 text-center">
+              <div class="col-6 col-sm-3"><div class="bg-secondary text-white rounded py-3">25%</div></div>
+              <div class="col-6 col-sm-3"><div class="bg-secondary text-white rounded py-3">25%</div></div>
+              <div class="col-6 col-sm-3"><div class="bg-secondary text-white rounded py-3">25%</div></div>
+              <div class="col-6 col-sm-3"><div class="bg-secondary text-white rounded py-3">25%</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row"&gt;
+  &lt;div class="col-6 col-sm-3"&gt;25%&lt;/div&gt;
+  &lt;div class="col-6 col-sm-3"&gt;25%&lt;/div&gt;
+  &lt;div class="col-6 col-sm-3"&gt;25%&lt;/div&gt;
+  &lt;div class="col-6 col-sm-3"&gt;25%&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 5 ============ -->
+      <section id="sec5" class="ex-section">
+        <h2><span class="num">5.</span>Alignment and Reordering in Grid</h2>
+
+        <div class="ex-card" id="ex5-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 5.1</span> justify-content-center + align-items-center</h5>
+          <div class="demo-frame">
+            <div class="row justify-content-center align-items-center" style="min-height:120px;">
+              <div class="col-4"><div class="bg-primary text-white text-center rounded py-4">centered</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row justify-content-center align-items-center" style="min-height:120px;"&gt;
+  &lt;div class="col-4"&gt;centered&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex5-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 5.2</span> Reorder columns with order-md-2 / order-md-1</h5>
+          <p class="text-muted mb-2">On mobile the boxes follow source order; from <code>md</code> upward, Box B jumps in front of Box A.</p>
+          <div class="demo-frame">
+            <div class="row">
+              <div class="col-12 col-md-6 order-md-2"><div class="bg-success text-white text-center rounded py-3">Box A (order-md-2)</div></div>
+              <div class="col-12 col-md-6 order-md-1"><div class="bg-warning text-center rounded py-3">Box B (order-md-1)</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row"&gt;
+  &lt;div class="col-12 col-md-6 order-md-2"&gt;Box A&lt;/div&gt;
+  &lt;div class="col-12 col-md-6 order-md-1"&gt;Box B&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 6 ============ -->
+      <section id="sec6" class="ex-section">
+        <h2><span class="num">6.</span>Responsive Flexbox Utilities</h2>
+        <div class="note-box mb-3"><i class="bi bi-exclamation-triangle"></i> The source exercise sheet labels this section's exercises "7.1 / 7.2" too, duplicating the numbers used by the Typography section right after it. Treated here as 6.1 / 6.2 so every exercise has a unique reference.</div>
+
+        <div class="ex-card" id="ex6-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 6.1</span> Navbar with d-flex, flex-column, flex-md-row</h5>
+          <p class="text-muted mb-2">Stacked vertically on small screens, horizontal from <code>md</code> up.</p>
+          <div class="demo-frame">
+            <nav class="d-flex flex-column flex-md-row align-items-center bg-light p-3 rounded gap-3">
+              <span class="fw-bold">Brand</span>
+              <a href="#" class="text-decoration-none">Home</a>
+              <a href="#" class="text-decoration-none">About</a>
+              <a href="#" class="text-decoration-none">Contact</a>
+            </nav>
+          </div>
+          <pre class="code-block"><code>&lt;nav class="d-flex flex-column flex-md-row align-items-center gap-3"&gt;
+  &lt;span class="fw-bold"&gt;Brand&lt;/span&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;a href="#"&gt;About&lt;/a&gt;
+  &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex6-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 6.2</span> justify-content-between + align-items-center in a card</h5>
+          <div class="demo-frame">
+            <div class="card" style="max-width:420px;">
+              <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <h6 class="card-title mb-0">Premium Plan</h6>
+                  <small class="text-muted">Billed monthly</small>
+                </div>
+                <span class="fs-5 fw-bold">$19</span>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="card-body d-flex justify-content-between align-items-center"&gt;
+  &lt;div&gt;
+    &lt;h6 class="card-title mb-0"&gt;Premium Plan&lt;/h6&gt;
+    &lt;small class="text-muted"&gt;Billed monthly&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;span class="fs-5 fw-bold"&gt;$19&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 7 ============ -->
+      <section id="sec7" class="ex-section">
+        <h2><span class="num">7.</span>Typography</h2>
+
+        <div class="ex-card" id="ex7-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 7.1</span> display-1, lead, text-muted, fw-bold, etc.</h5>
+          <div class="demo-frame">
+            <p class="display-1">Display 1</p>
+            <p class="display-4">Display 4</p>
+            <p class="lead">This is a lead paragraph — slightly larger, used to introduce a section.</p>
+            <p class="text-muted">This text uses <code>.text-muted</code> for de-emphasized copy.</p>
+            <p class="fw-bold">This text uses <code>.fw-bold</code>.</p>
+            <p class="fst-italic">This text uses <code>.fst-italic</code>.</p>
+            <p><small class="text-body-secondary">This is a smaller, secondary-colored line.</small></p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="display-1"&gt;Display 1&lt;/p&gt;
+&lt;p class="display-4"&gt;Display 4&lt;/p&gt;
+&lt;p class="lead"&gt;This is a lead paragraph...&lt;/p&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;
+&lt;p class="fw-bold"&gt;Bold text&lt;/p&gt;
+&lt;p class="fst-italic"&gt;Italic text&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex7-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 7.2</span> text-uppercase, text-lowercase, text-capitalize</h5>
+          <div class="demo-frame">
+            <p class="text-uppercase mb-1">this becomes UPPERCASE</p>
+            <p class="text-lowercase mb-1">THIS BECOMES lowercase</p>
+            <p class="text-capitalize mb-0">this becomes Title Case Per Word</p>
+          </div>
+          <pre class="code-block"><code>&lt;p class="text-uppercase"&gt;this becomes UPPERCASE&lt;/p&gt;
+&lt;p class="text-lowercase"&gt;THIS BECOMES lowercase&lt;/p&gt;
+&lt;p class="text-capitalize"&gt;this becomes Title Case&lt;/p&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 8 ============ -->
+      <section id="sec8" class="ex-section">
+        <h2><span class="num">8.</span>Forms</h2>
+
+        <div class="ex-card" id="ex8-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 8.1</span> Registration form — form-control, form-check, input-group</h5>
+          <div class="demo-frame">
+            <form class="row g-3" onsubmit="return false;">
+              <div class="col-md-6">
+                <label class="form-label">Full name</label>
+                <input type="text" class="form-control" placeholder="Jane Doe">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" placeholder="janedoe">
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="jane@example.com">
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms">
+                  <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Register</button>
+              </div>
+            </form>
+          </div>
+          <pre class="code-block"><code>&lt;form class="row g-3"&gt;
+  &lt;div class="col-md-6"&gt;
+    &lt;label class="form-label"&gt;Full name&lt;/label&gt;
+    &lt;input type="text" class="form-control"&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-6"&gt;
+    &lt;label class="form-label"&gt;Username&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+      &lt;input type="text" class="form-control"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="checkbox" id="terms"&gt;
+    &lt;label class="form-check-label" for="terms"&gt;I agree...&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button class="btn btn-primary" type="submit"&gt;Register&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex8-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 8.2</span> Login form styled with form-floating</h5>
+          <div class="demo-frame">
+            <form style="max-width:360px;" onsubmit="return false;">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatEmail" placeholder="name@example.com">
+                <label for="floatEmail">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatPassword" placeholder="Password">
+                <label for="floatPassword">Password</label>
+              </div>
+              <button class="btn btn-primary w-100" type="submit">Log in</button>
+            </form>
+          </div>
+          <pre class="code-block"><code>&lt;div class="form-floating mb-3"&gt;
+  &lt;input type="email" class="form-control" id="floatEmail" placeholder="name@example.com"&gt;
+  &lt;label for="floatEmail"&gt;Email address&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating mb-3"&gt;
+  &lt;input type="password" class="form-control" id="floatPassword" placeholder="Password"&gt;
+  &lt;label for="floatPassword"&gt;Password&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 9 ============ -->
+      <section id="sec9" class="ex-section">
+        <h2><span class="num">9.</span>Buttons</h2>
+
+        <div class="ex-card" id="ex9-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 9.1</span> All contextual button classes</h5>
+          <div class="demo-frame d-flex flex-wrap gap-2">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-warning">Warning</button>
+            <button class="btn btn-info">Info</button>
+            <button class="btn btn-light">Light</button>
+            <button class="btn btn-dark">Dark</button>
+            <button class="btn btn-outline-primary">Outline primary</button>
+            <button class="btn btn-outline-danger">Outline danger</button>
+            <button class="btn btn-outline-success">Outline success</button>
+            <button class="btn btn-link">Link</button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-outline-primary"&gt;Outline primary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;!-- ...secondary, warning, info, light, dark, link --&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex9-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 9.2</span> Button groups + toggle buttons (checkboxes)</h5>
+          <div class="demo-frame">
+            <div class="btn-group mb-3" role="group">
+              <button class="btn btn-outline-primary">Left</button>
+              <button class="btn btn-outline-primary">Middle</button>
+              <button class="btn btn-outline-primary">Right</button>
+            </div>
+            <div>
+              <div class="btn-group" role="group">
+                <input type="checkbox" class="btn-check" id="bc1" autocomplete="off">
+                <label class="btn btn-outline-success" for="bc1">Checkbox 1</label>
+                <input type="checkbox" class="btn-check" id="bc2" autocomplete="off">
+                <label class="btn btn-outline-success" for="bc2">Checkbox 2</label>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="btn-group" role="group"&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="btn-group" role="group"&gt;
+  &lt;input type="checkbox" class="btn-check" id="bc1" autocomplete="off"&gt;
+  &lt;label class="btn btn-outline-success" for="bc1"&gt;Checkbox 1&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 10 ============ -->
+      <section id="sec10" class="ex-section">
+        <h2><span class="num">10.</span>Navbars and Navigation</h2>
+
+        <div class="ex-card" id="ex10-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 10.1</span> Responsive navbar with logo, links, search form</h5>
+          <div class="demo-frame p-0 overflow-hidden">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+              <a class="navbar-brand" href="#"><i class="bi bi-bootstrap-fill"></i> MyBrand</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                </ul>
+                <form class="d-flex" role="search" onsubmit="return false;">
+                  <input class="form-control me-2" type="search" placeholder="Search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+          </div>
+          <pre class="code-block"><code>&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;MyBrand&lt;/a&gt;
+  &lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMain"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navMain"&gt;
+    &lt;ul class="navbar-nav me-auto"&gt;
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;form class="d-flex" role="search"&gt;
+      &lt;input class="form-control me-2" type="search"&gt;
+      &lt;button class="btn btn-outline-light"&gt;Search&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex10-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 10.2</span> Tabbed navigation with nav-tabs / nav-pills</h5>
+          <div class="demo-frame">
+            <ul class="nav nav-tabs mb-3">
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tabA">Tab A</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tabB">Tab B</a></li>
+            </ul>
+            <div class="tab-content mb-4">
+              <div class="tab-pane fade show active" id="tabA">Content for Tab A.</div>
+              <div class="tab-pane fade" id="tabB">Content for Tab B.</div>
+            </div>
+            <ul class="nav nav-pills">
+              <li class="nav-item"><a class="nav-link active" href="#">Pill 1</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Pill 2</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Pill 3</a></li>
+            </ul>
+          </div>
+          <pre class="code-block"><code>&lt;ul class="nav nav-tabs"&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" data-bs-toggle="tab" href="#tabA"&gt;Tab A&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" data-bs-toggle="tab" href="#tabB"&gt;Tab B&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content"&gt;
+  &lt;div class="tab-pane fade show active" id="tabA"&gt;Content for Tab A.&lt;/div&gt;
+  &lt;div class="tab-pane fade" id="tabB"&gt;Content for Tab B.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul class="nav nav-pills"&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Pill 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 11 ============ -->
+      <section id="sec11" class="ex-section">
+        <h2><span class="num">11.</span>Cards and Media Objects</h2>
+
+        <div class="ex-card" id="ex11-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 11.1</span> Profile card — card, card-body, card-title, card-img-top</h5>
+          <div class="demo-frame">
+            <div class="card" style="max-width:300px;">
+              <img src="https://placehold.co/300x160/7952b3/ffffff?text=Profile" class="card-img-top" alt="Profile banner">
+              <div class="card-body">
+                <h5 class="card-title">Jane Doe</h5>
+                <p class="card-text text-muted">AI &amp; ML student, building portfolio projects for placements.</p>
+                <a href="#" class="btn btn-primary btn-sm">View profile</a>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="card" style="max-width:300px;"&gt;
+  &lt;img src="profile.jpg" class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Jane Doe&lt;/h5&gt;
+    &lt;p class="card-text text-muted"&gt;AI &amp; ML student...&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary btn-sm"&gt;View profile&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex11-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 11.2</span> Media object layout — image left, content right</h5>
+          <div class="note-box mb-3"><i class="bi bi-info-circle"></i> The old <code>.media</code> component was dropped in Bootstrap 5; the official replacement is plain flex utilities (<code>d-flex</code> + <code>flex-shrink-0</code>), shown below.</div>
+          <div class="demo-frame">
+            <div class="d-flex">
+              <img src="https://placehold.co/64x64/563d7c/ffffff?text=JD" class="flex-shrink-0 rounded" alt="avatar">
+              <div class="ms-3">
+                <h6 class="mt-0 mb-1">Media heading</h6>
+                <p class="mb-0 text-muted">This is some content from a media component. It places an image to the left of the text using <code>d-flex</code> and <code>flex-shrink-0</code>.</p>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="d-flex"&gt;
+  &lt;img src="avatar.jpg" class="flex-shrink-0 rounded" alt="..."&gt;
+  &lt;div class="ms-3"&gt;
+    &lt;h6 class="mt-0 mb-1"&gt;Media heading&lt;/h6&gt;
+    &lt;p class="mb-0"&gt;This is some content from a media component...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 12 ============ -->
+      <section id="sec12" class="ex-section">
+        <h2><span class="num">12.</span>Spacing Utilities</h2>
+
+        <div class="ex-card" id="ex12-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 12.1</span> Margin (m-3, mt-4) and padding (p-2, py-5)</h5>
+          <div class="demo-frame">
+            <div class="bg-light border">
+              <div class="bg-primary text-white m-3 p-2 d-inline-block">m-3 p-2</div>
+              <div class="bg-success text-white mt-4 py-5 px-3 d-inline-block">mt-4 py-5</div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="bg-primary text-white m-3 p-2"&gt;m-3 p-2&lt;/div&gt;
+&lt;div class="bg-success text-white mt-4 py-5 px-3"&gt;mt-4 py-5&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex12-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 12.2</span> Pricing section laid out with spacing utilities</h5>
+          <div class="demo-frame">
+            <div class="row g-4 text-center">
+              <div class="col-md-4">
+                <div class="border rounded p-4">
+                  <h6 class="text-uppercase text-muted mb-2">Basic</h6>
+                  <p class="display-6 mb-3">$9<small class="fs-6 text-muted">/mo</small></p>
+                  <button class="btn btn-outline-primary w-100">Choose</button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="border border-primary rounded p-4 shadow-sm">
+                  <h6 class="text-uppercase text-muted mb-2">Pro</h6>
+                  <p class="display-6 mb-3">$29<small class="fs-6 text-muted">/mo</small></p>
+                  <button class="btn btn-primary w-100">Choose</button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="border rounded p-4">
+                  <h6 class="text-uppercase text-muted mb-2">Team</h6>
+                  <p class="display-6 mb-3">$49<small class="fs-6 text-muted">/mo</small></p>
+                  <button class="btn btn-outline-primary w-100">Choose</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row g-4 text-center"&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;div class="border rounded p-4"&gt;
+      &lt;h6 class="text-uppercase text-muted mb-2"&gt;Basic&lt;/h6&gt;
+      &lt;p class="display-6 mb-3"&gt;$9&lt;small class="fs-6 text-muted"&gt;/mo&lt;/small&gt;&lt;/p&gt;
+      &lt;button class="btn btn-outline-primary w-100"&gt;Choose&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- repeat for Pro, Team --&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 13 ============ -->
+      <section id="sec13" class="ex-section">
+        <h2><span class="num">13.</span>Colors and Backgrounds</h2>
+
+        <div class="ex-card" id="ex13-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 13.1</span> Dashboard using contextual background + text colors</h5>
+          <div class="demo-frame">
+            <div class="row g-2 text-center">
+              <div class="col-6 col-md-3"><div class="bg-primary text-white rounded p-3">Visitors<br><strong>1,204</strong></div></div>
+              <div class="col-6 col-md-3"><div class="bg-success text-white rounded p-3">Sales<br><strong>$8,430</strong></div></div>
+              <div class="col-6 col-md-3"><div class="bg-warning text-dark rounded p-3">Pending<br><strong>12</strong></div></div>
+              <div class="col-6 col-md-3"><div class="bg-danger text-white rounded p-3">Errors<br><strong>3</strong></div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="bg-primary text-white rounded p-3"&gt;Visitors: 1,204&lt;/div&gt;
+&lt;div class="bg-success text-white rounded p-3"&gt;Sales: $8,430&lt;/div&gt;
+&lt;div class="bg-warning text-dark rounded p-3"&gt;Pending: 12&lt;/div&gt;
+&lt;div class="bg-danger text-white rounded p-3"&gt;Errors: 3&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex13-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 13.2</span> bg-gradient with bg-dark and white text</h5>
+          <div class="demo-frame">
+            <div class="bg-dark bg-gradient text-white rounded p-4 text-center">
+              <h5 class="mb-0">bg-dark + bg-gradient</h5>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="bg-dark bg-gradient text-white rounded p-4 text-center"&gt;
+  &lt;h5 class="mb-0"&gt;bg-dark + bg-gradient&lt;/h5&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 14 ============ -->
+      <section id="sec14" class="ex-section">
+        <h2><span class="num">14.</span>Display and Visibility</h2>
+
+        <div class="ex-card" id="ex14-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 14.1</span> d-none, d-md-block, d-lg-flex</h5>
+          <p class="text-muted mb-2">Resize the window: the first box is hidden below <code>md</code>, the second only appears as flex from <code>lg</code> up.</p>
+          <div class="demo-frame">
+            <div class="d-none d-md-block bg-info bg-opacity-25 rounded p-3 mb-2">Visible from <code>md</code> up (d-none d-md-block)</div>
+            <div class="d-none d-lg-flex bg-secondary bg-opacity-25 rounded p-3 justify-content-between">
+              <span>Visible &amp; flex from <code>lg</code> up</span><span>(d-none d-lg-flex)</span>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="d-none d-md-block"&gt;Visible from md up&lt;/div&gt;
+&lt;div class="d-none d-lg-flex"&gt;Visible &amp; flex from lg up&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex14-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 14.2</span> Responsive sidebar — tablet and above only</h5>
+          <div class="demo-frame">
+            <div class="row">
+              <div class="col-md-3 d-none d-md-block"><div class="bg-dark text-white rounded p-3">Sidebar<br><small>shown md+</small></div></div>
+              <div class="col-12 col-md-9"><div class="bg-light border rounded p-3">Content (always visible)</div></div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="row"&gt;
+  &lt;div class="col-md-3 d-none d-md-block"&gt;Sidebar&lt;/div&gt;
+  &lt;div class="col-12 col-md-9"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 15 ============ -->
+      <section id="sec15" class="ex-section">
+        <h2><span class="num">15.</span>Borders, Shadows, and Rounded Corners</h2>
+
+        <div class="ex-card" id="ex15-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 15.1</span> border, border-primary, border-3, rounded-circle</h5>
+          <div class="demo-frame d-flex flex-wrap gap-3 align-items-center">
+            <div class="border p-3">border</div>
+            <div class="border border-primary p-3">border-primary</div>
+            <div class="border border-primary border-3 p-3">border-3</div>
+            <img src="https://placehold.co/80x80/7952b3/ffffff?text=IMG" class="rounded-circle" alt="rounded circle image">
+          </div>
+          <pre class="code-block"><code>&lt;div class="border"&gt;border&lt;/div&gt;
+&lt;div class="border border-primary"&gt;border-primary&lt;/div&gt;
+&lt;div class="border border-primary border-3"&gt;border-3&lt;/div&gt;
+&lt;img src="photo.jpg" class="rounded-circle"&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex15-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 15.2</span> shadow, shadow-lg, rounded-pill in a card</h5>
+          <div class="demo-frame d-flex flex-wrap gap-3">
+            <div class="card shadow" style="width:180px;"><div class="card-body">shadow</div></div>
+            <div class="card shadow-lg" style="width:180px;"><div class="card-body">shadow-lg</div></div>
+            <span class="badge bg-primary rounded-pill align-self-center px-3 py-2">rounded-pill</span>
+          </div>
+          <pre class="code-block"><code>&lt;div class="card shadow"&gt;...&lt;/div&gt;
+&lt;div class="card shadow-lg"&gt;...&lt;/div&gt;
+&lt;span class="badge bg-primary rounded-pill"&gt;rounded-pill&lt;/span&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 16 ============ -->
+      <section id="sec16" class="ex-section">
+        <h2><span class="num">16.</span>Positioning Utilities</h2>
+
+        <div class="ex-card" id="ex16-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 16.1</span> Fixed footer with position-fixed bottom-0</h5>
+          <p class="text-muted mb-2"><code>position-fixed</code> pins an element to the browser viewport, not the page section — so this demo runs inside its own mini-page (an iframe) to show it correctly without pinning something to the bottom of <em>this</em> page.</p>
+          <div class="demo-frame p-0">
+            <iframe style="width:100%;height:220px;border:0;border-radius:.5rem;" srcdoc='&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;&lt;/head&gt;&lt;body&gt;&lt;div class="container py-3"&gt;&lt;p&gt;Scroll this mini page — the footer stays pinned to the bottom of its own viewport.&lt;/p&gt;&lt;p&gt;More content...&lt;/p&gt;&lt;p&gt;More content...&lt;/p&gt;&lt;p&gt;More content...&lt;/p&gt;&lt;/div&gt;&lt;footer class="position-fixed bottom-0 start-0 w-100 bg-dark text-white text-center py-2"&gt;Fixed footer (position-fixed bottom-0)&lt;/footer&gt;&lt;/body&gt;&lt;/html&gt;'></iframe>
+          </div>
+          <pre class="code-block"><code>&lt;footer class="position-fixed bottom-0 start-0 w-100 bg-dark text-white text-center py-2"&gt;
+  Fixed footer
+&lt;/footer&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex16-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 16.2</span> position-relative / position-absolute to overlay a badge on an image</h5>
+          <div class="demo-frame">
+            <div class="position-relative d-inline-block">
+              <img src="https://placehold.co/120x120/495057/ffffff?text=Avatar" class="rounded" alt="avatar">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9+</span>
+              <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-light rounded-circle" style="width:18px;height:18px;"></span>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="position-relative d-inline-block"&gt;
+  &lt;img src="avatar.jpg" class="rounded"&gt;
+  &lt;span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"&gt;
+    9+
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 17 ============ -->
+      <section id="sec17" class="ex-section">
+        <h2><span class="num">17.</span>Icons with Bootstrap Icons</h2>
+
+        <div class="ex-card" id="ex17-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 17.1</span> Social media icons in a footer</h5>
+          <div class="demo-frame">
+            <footer class="bg-dark text-white text-center rounded p-3">
+              <div class="fs-4">
+                <a href="#" class="text-white mx-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-github"></i></a>
+              </div>
+            </footer>
+          </div>
+          <pre class="code-block"><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"&gt;
+
+&lt;footer class="bg-dark text-white text-center p-3"&gt;
+  &lt;a href="#" class="text-white mx-2"&gt;&lt;i class="bi bi-facebook"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;a href="#" class="text-white mx-2"&gt;&lt;i class="bi bi-instagram"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;a href="#" class="text-white mx-2"&gt;&lt;i class="bi bi-github"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/footer&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex17-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 17.2</span> Icon-only buttons instead of text buttons</h5>
+          <div class="demo-frame d-flex gap-2">
+            <button class="btn btn-outline-primary" title="Edit"><i class="bi bi-pencil-fill"></i></button>
+            <button class="btn btn-outline-danger" title="Delete"><i class="bi bi-trash-fill"></i></button>
+            <button class="btn btn-outline-success" title="Download"><i class="bi bi-download"></i></button>
+            <button class="btn btn-outline-secondary" title="Settings"><i class="bi bi-gear-fill"></i></button>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn-outline-primary" title="Edit"&gt;&lt;i class="bi bi-pencil-fill"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="btn btn-outline-danger" title="Delete"&gt;&lt;i class="bi bi-trash-fill"&gt;&lt;/i&gt;&lt;/button&gt;</code></pre>
+          <div class="note-box mt-3"><i class="bi bi-info-circle"></i> Keep a <code>title</code> (and ideally <code>aria-label</code>) on icon-only buttons so the action is still announced to screen readers.</div>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 18 ============ -->
+      <section id="sec18" class="ex-section">
+        <h2><span class="num">18.</span>Bootstrap 5 JavaScript Plugins</h2>
+
+        <div class="ex-card" id="ex18-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 18.1</span> Modal popup triggered by a button</h5>
+          <div class="demo-frame">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exModal">Open modal</button>
+            <div class="modal fade" id="exModal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Example Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">This modal is triggered purely with <code>data-bs-toggle</code> / <code>data-bs-target</code> — no custom JS needed.</div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exModal"&gt;
+  Open modal
+&lt;/button&gt;
+
+&lt;div class="modal fade" id="exModal" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Example Modal&lt;/h5&gt;
+        &lt;button class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;Modal body text&lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex18-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 18.2</span> Collapsible accordion</h5>
+          <div class="demo-frame">
+            <div class="accordion" id="exAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accA">Section 1</button>
+                </h2>
+                <div id="accA" class="accordion-collapse collapse show" data-bs-parent="#exAccordion">
+                  <div class="accordion-body">Content for the first accordion section.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accB">Section 2</button>
+                </h2>
+                <div id="accB" class="accordion-collapse collapse" data-bs-parent="#exAccordion">
+                  <div class="accordion-body">Content for the second accordion section.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pre class="code-block"><code>&lt;div class="accordion" id="exAccordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header"&gt;
+      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accA"&gt;
+        Section 1
+      &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="accA" class="accordion-collapse collapse show" data-bs-parent="#exAccordion"&gt;
+      &lt;div class="accordion-body"&gt;Content...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 19 ============ -->
+      <section id="sec19" class="ex-section" style="border-bottom:none;">
+        <h2><span class="num">19.</span>Customization with Sass</h2>
+
+        <div class="ex-card" id="ex19-1">
+          <h5><span class="badge bg-primary badge-ex">Exercise 19.1</span> Set up a Bootstrap 5 project with Sass via npm</h5>
+          <pre class="code-block"><code># 1. init project &amp; install deps
+npm init -y
+npm install bootstrap sass --save-dev
+
+# 2. project structure
+my-project/
+├── scss/
+│   └── custom.scss
+├── index.html
+└── package.json
+
+# 3. add a build script to package.json
+"scripts": {
+  "build:css": "sass scss/custom.scss css/custom.css"
+}
+
+# 4. compile
+npm run build:css</code></pre>
+          <pre class="code-block mt-3"><code>&lt;!-- index.html --&gt;
+&lt;link href="css/custom.css" rel="stylesheet"&gt;</code></pre>
+        </div>
+
+        <div class="ex-card" id="ex19-2">
+          <h5><span class="badge bg-primary badge-ex">Exercise 19.2</span> Customize primary color and border radius via _variables.scss</h5>
+          <p class="text-muted mb-2">Override Bootstrap's Sass variables <em>before</em> importing Bootstrap itself, so your values replace the defaults during compilation.</p>
+          <pre class="code-block"><code>// scss/custom.scss
+
+// 1. Your overrides FIRST
+$primary: #ff6b35;
+$border-radius: 1rem;
+$border-radius-lg: 1.25rem;
+$border-radius-sm: .5rem;
+
+// 2. Then pull in Bootstrap's source Sass
+@import "../node_modules/bootstrap/scss/bootstrap";</code></pre>
+          <pre class="code-block mt-3"><code>npm run build:css   # recompiles css/custom.css with the new
+                     # primary color and rounder corners applied
+                     # to every component (buttons, cards, alerts...)</code></pre>
+          <div class="note-box mt-3"><i class="bi bi-info-circle"></i> This page itself uses the compiled defaults from the CDN, so it can't show the recompiled output live — but every <code>btn-primary</code>, <code>card</code>, and <code>rounded</code> element across the site would pick up the new orange/round-corner theme automatically once <code>custom.css</code> replaces the CDN link.</div>
+        </div>
+      </section>
+
+      <footer class="text-center text-muted py-4 small">
+        Bootstrap 5 Exercises — all 19 sections, 38 exercises, built with Bootstrap 5.3 (CDN).
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Bootstrap 5 Bundle JS (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
