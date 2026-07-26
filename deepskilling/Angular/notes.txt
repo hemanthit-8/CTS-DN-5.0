@@ -1,0 +1,55 @@
+Hands-On 1, Task 1 — Notes on generated project files
+=======================================================
+
+angular.json
+  Workspace configuration file. Defines project(s), build targets (build, serve,
+  test), and the options/configurations (like "production" vs "development")
+  used by the Angular CLI to compile and run the app.
+
+tsconfig.json
+  Root TypeScript configuration shared across the whole workspace — base compiler
+  options (target, strict mode, module resolution) that other tsconfig files extend.
+
+tsconfig.app.json
+  TypeScript configuration specific to the application build. Extends
+  tsconfig.json and narrows the "files"/"include" scope to just the app source
+  (excluding spec files, which use tsconfig.spec.json instead).
+
+package.json
+  Lists the project's npm dependencies (Angular packages, RxJS, NgRx, etc.),
+  devDependencies (CLI, TypeScript, Karma/Jasmine), and npm scripts (ng serve,
+  ng build, ng test).
+
+src/main.ts
+  The application's entry point. Calls bootstrapApplication(App, appConfig) to
+  start the standalone root component and register all app-wide providers
+  (router, HttpClient, NgRx store, etc.) defined in app.config.ts.
+
+src/app/app.config.ts
+  Standalone-mode equivalent of the old app.module.ts. Registers global
+  providers: the router, HttpClient (with interceptors), and the NgRx store/effects.
+
+src/app/app.component.ts (app.ts in this project's generated naming)
+  The root component. Hosts the <app-header> and the <router-outlet> that
+  renders whichever route component is currently active.
+
+src/index.html
+  The single HTML page served to the browser. Contains the <app-root> element
+  that Angular bootstraps into, plus the page <title> and viewport meta tag.
+
+Notes on ng build output
+=========================
+Running `ng build` produces a dist/student-course-portal/browser/ folder.
+The compiled application code lives in the hashed main-*.js bundle (plus
+lazy-loaded chunk-*.js files for each lazily-routed feature, e.g. the
+enrollment forms and course list). polyfills-*.js and styles-*.css are also
+generated; index.html in that folder references all of them.
+
+Notes on angular.json budgets
+==============================
+Under architect > build > configurations > production > budgets, the CLI
+defines size budgets per bundle type (e.g. "initial") with maximumWarning and
+maximumError thresholds. maximumWarning logs a build warning once the bundle
+exceeds that size; maximumError fails the build entirely once the bundle
+exceeds that size. These exist to catch bundle-size regressions before they
+ship to production.

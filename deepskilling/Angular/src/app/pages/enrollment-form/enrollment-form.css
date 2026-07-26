@@ -1,0 +1,5 @@
+form div { margin-bottom: 10px; }
+.error { color: red; display: block; font-size: 0.85em; }
+.success { color: green; font-weight: 600; }
+input.ng-invalid.ng-touched { border-color: red; }
+input.ng-valid.ng-touched { border-color: green; }

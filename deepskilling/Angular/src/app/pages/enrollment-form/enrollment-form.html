@@ -1,0 +1,62 @@
+<h2>Enrollment Request (Template-Driven Form)</h2>
+
+<form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)">
+  <div>
+    <label>Student Name</label>
+    <input
+      name="studentName"
+      [(ngModel)]="studentName"
+      #nameCtrl="ngModel"
+      required
+      minlength="3"
+    />
+    <span class="error" *ngIf="nameCtrl.touched && nameCtrl.errors?.['required']">Name is required.</span>
+    <span class="error" *ngIf="nameCtrl.touched && nameCtrl.errors?.['minlength']">Name must be at least 3 characters.</span>
+  </div>
+
+  <div>
+    <label>Student Email</label>
+    <input
+      name="studentEmail"
+      type="email"
+      [(ngModel)]="studentEmail"
+      #emailCtrl="ngModel"
+      required
+      email
+    />
+    <span class="error" *ngIf="emailCtrl.touched && emailCtrl.errors?.['required']">Email is required.</span>
+    <span class="error" *ngIf="emailCtrl.touched && emailCtrl.errors?.['email']">Enter a valid email.</span>
+  </div>
+
+  <div>
+    <label>Course ID</label>
+    <input
+      name="courseId"
+      type="number"
+      [(ngModel)]="courseId"
+      #courseIdCtrl="ngModel"
+      required
+    />
+    <span class="error" *ngIf="courseIdCtrl.touched && courseIdCtrl.errors?.['required']">Course ID is required.</span>
+  </div>
+
+  <div>
+    <label>Preferred Semester</label>
+    <select name="preferredSemester" [(ngModel)]="preferredSemester">
+      <option value="Odd">Odd</option>
+      <option value="Even">Even</option>
+    </select>
+  </div>
+
+  <div>
+    <label>
+      <input name="agreeToTerms" type="checkbox" [(ngModel)]="agreeToTerms" required />
+      I agree to the terms
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="enrollForm.invalid">Submit</button>
+  <button type="button" (click)="enrollForm.resetForm()">Reset</button>
+
+  <p *ngIf="submitted" class="success">Enrollment request submitted successfully!</p>
+</form>

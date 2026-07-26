@@ -1,0 +1,14 @@
+.card {
+  border: 1px solid #ddd;
+  border-left: 4px solid grey;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  transition: max-height 0.2s ease;
+}
+.card--enrolled { background-color: #eefaf0; }
+.card--full { font-weight: 600; }
+.expanded { padding-bottom: 24px; }
+.badge--passed { color: green; font-weight: bold; }
+.badge--failed { color: red; font-weight: bold; }
+.badge--pending { color: grey; font-weight: bold; }

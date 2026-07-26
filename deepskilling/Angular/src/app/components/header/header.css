@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background-color: #2b3a55;
+}
+.brand { color: #fff; font-weight: 700; margin-right: 24px; }
+nav a { color: #cfd8e3; text-decoration: none; }
+nav a.active { color: #fff; font-weight: 600; }
