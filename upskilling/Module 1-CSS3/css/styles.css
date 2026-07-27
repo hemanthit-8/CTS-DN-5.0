@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Local Community Event Portal — styles.css
+   Task 2: Clean, readable CSS with consistent indentation and section comments
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Task 3: Universal selector — reset margin/padding on every element
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Base typography (Task 5)
+   -------------------------------------------------------------------------- */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222;
+
+  /* Task 4: Background image on body with a solid-color fallback */
+  background-color: #f4f6f8;
+  background-image: url('../images/community-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Task 3: Element selector — style every <h2> the same way */
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Task 3: Grouping selector — h3 and p share base text styling */
+h3,
+p {
+  font-family: 'Merriweather', serif;
+  color: #333;
+}
+
+/* ==========================================================================
+   Header styles
+   ========================================================================== */
+
+/* Task 3: ID selector for the main banner */
+#mainHeader {
+  background: linear-gradient(135deg, #007bff, #00c6a9); /* Task 4: gradient header */
+  color: #fff;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+#mainHeader h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+#mainHeader .tagline {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   Task 6: Navigation — remove bullets, style links, hover states
+   -------------------------------------------------------------------------- */
+.main-nav {
+  margin-top: 1.2rem;
+}
+
+.main-nav ul {
+  list-style-type: none;      /* remove bullets from nav menu */
+  list-style-position: inside;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.main-nav li {
+  padding: 0.25rem 0;
+}
+
+.main-nav a:link,
+.main-nav a:visited {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.main-nav a:active {
+  color: #ffe9a8;
+}
+
+/* ==========================================================================
+   Hero section — gradient background, RGBA overlay text
+   ========================================================================== */
+.hero {
+  background: linear-gradient(120deg, rgba(0, 123, 255, 0.85), rgba(0, 198, 169, 0.85));
+  color: #ffffff;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.hero p {
+  color: #f0f8ff;
+  max-width: 600px;
+  margin: 0.75rem auto 0;
+}
+
+/* ==========================================================================
+   Events section — Box model & layout (Task 8)
+   ========================================================================== */
+.events-section {
+  padding: 2.5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Task 3: Class selector for event containers */
+.eventCard {
+  background-color: #ffffff;
+  border: 1px solid #d8dfe6;      /* border */
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;        /* padding */
+  margin-bottom: 1.25rem;         /* margin */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.eventCard h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.eventCard p {
+  color: #555;
+  text-align: left;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
+/* Task 6: link pseudo-classes for in-content links */
+.details-link:link,
+.details-link:visited {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+}
+
+.details-link:active {
+  color: #0056b3;
+}
+
+/* --------------------------------------------------------------------------
+   Signup form — outline vs border, visibility vs display (Task 8)
+   -------------------------------------------------------------------------- */
+.signup-form {
+  background-color: #eef6ff;
+  border: 1px solid #cfe3fb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.signup-form label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.signup-form input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #b7c6d9;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+/* Outline is used to highlight the currently focused field.
+   Unlike border, outline does not affect layout/box size. */
+.signup-form input:focus {
+  outline: 3px solid #ffb703;
+  outline-offset: 2px;
+}
+
+/* visibility:hidden — element still reserves its space in the layout */
+.hidden-visibility {
+  visibility: hidden;
+}
+
+/* display:none — element is completely removed from the layout flow */
+.hidden-display {
+  display: none;
+}
+
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* ==========================================================================
+   Bulletin section — Multi-column layout (Task 9)
+   ========================================================================== */
+.bulletin-section {
+  background-color: #ffffff;
+  padding: 2.5rem 1.5rem;
+}
+
+.news-article {
+  max-width: 900px;
+  margin: 0 auto;
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+.news-article p {
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Admin table styling (Task 7)
+   ========================================================================== */
+.admin-section {
+  padding: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid #d8dfe6;
+  padding: 0.75rem;
+}
+
+th {
+  background-color: #007bff;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Zebra striping on even rows */
+tbody tr:nth-child(even) {
+  background-color: #f2f7fc;
+}
+
+tbody tr:hover {
+  background-color: #eaf3ff;
+}
+
+/* ==========================================================================
+   Footer styles
+   ========================================================================== */
+footer {
+  background-color: #1c2b36;
+  color: #cfd8e3;
+  text-align: center;
+  padding: 1.75rem 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.footer-links a:link,
+.footer-links a:visited {
+  color: #9fc4f0;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-links a:active {
+  color: #ffb703;
+}
+
+/* ==========================================================================
+   Task 10: Responsive Web Design — Media Queries
+   ========================================================================== */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  #mainHeader h1 {
+    font-size: 1.8rem;
+  }
+
+  .main-nav ul {
+    flex-direction: column;      /* stack nav links vertically */
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    width: 90vw;                 /* flexible width using viewport units */
+  }
+
+  .events-section,
+  .bulletin-section,
+  .admin-section {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Collapse the bulletin to a single column on small screens */
+  .news-article {
+    column-count: 1;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  #mainHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .eventCard {
+    padding: 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}

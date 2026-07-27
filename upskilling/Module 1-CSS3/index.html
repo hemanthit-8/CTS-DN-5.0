@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Community Event Portal</title>
+
+  <!-- Task 5: Google Font import via <link> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Task 1: Embedded <style> tag in <head> defining body background -->
+  <style>
+    body {
+      background-color: #f4f6f8;
+    }
+  </style>
+
+  <!-- Task 1: External stylesheet link -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header id="mainHeader">
+    <!-- Task 1: Inline style making this heading red -->
+    <h1 style="color: red;">Local Community Event Portal</h1>
+    <p class="tagline">Bringing neighbors together, one event at a time</p>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#bulletin">Bulletin</a></li>
+        <li><a href="#admin-table">Admin</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============ HERO / GRADIENT SECTION ============ -->
+  <section class="hero">
+    <h2>Upcoming Community Highlights</h2>
+    <p>Discover local events, connect with neighbors, and stay informed about what's happening around town.</p>
+  </section>
+
+  <!-- ============ EVENT CARDS (Selectors + Box Model) ============ -->
+  <section id="events" class="events-section">
+    <h2>Featured Events</h2>
+
+    <div class="eventCard">
+      <h3>Farmers Market Weekend</h3>
+      <p>Fresh produce, local crafts, and live music every Saturday morning at Central Park.</p>
+      <a href="#" class="details-link">View details</a>
+    </div>
+
+    <div class="eventCard">
+      <h3>Neighborhood Cleanup Drive</h3>
+      <p>Join volunteers for a morning of cleaning up our shared green spaces. Gloves and bags provided.</p>
+      <a href="#" class="details-link">View details</a>
+    </div>
+
+    <div class="eventCard">
+      <h3>Autumn Street Festival</h3>
+      <p>Food trucks, local vendors, and family activities line Main Street for this annual celebration.</p>
+      <a href="#" class="details-link">View details</a>
+    </div>
+
+    <!-- Sample form to demonstrate outline vs border, and visibility vs display -->
+    <form class="signup-form">
+      <h3>Get Event Reminders</h3>
+      <label for="emailInput">Email address</label>
+      <input type="email" id="emailInput" name="email" placeholder="you@example.com" required />
+
+      <label for="phoneInput">Phone (optional)</label>
+      <input type="tel" id="phoneInput" name="phone" placeholder="555-123-4567" />
+
+      <!-- This field is hidden with visibility:hidden -- still takes up space -->
+      <label for="hiddenField" class="hidden-visibility">Referral code</label>
+      <input type="text" id="hiddenField" class="hidden-visibility" />
+
+      <!-- This field is hidden with display:none -- removed entirely from layout -->
+      <input type="text" id="honeypot" class="hidden-display" />
+
+      <button type="submit" class="cta-button">Sign Me Up</button>
+    </form>
+  </section>
+
+  <!-- ============ MULTI-COLUMN BULLETIN (Task 9) ============ -->
+  <section id="bulletin" class="bulletin-section">
+    <h2>Community Bulletin</h2>
+    <article class="news-article">
+      <p>
+        The city council has approved funding for three new pocket parks to be built
+        across the neighborhood over the next year. Construction is expected to begin
+        in early spring, with the first park slated for completion before summer.
+        Residents are encouraged to attend the upcoming planning meeting to share
+        input on amenities such as seating, shade structures, and play equipment.
+      </p>
+      <p>
+        In addition to the parks initiative, the local library has extended its
+        weekend hours and introduced a new tutoring program for students. Volunteers
+        are still needed to help staff the front desk on Saturday afternoons. Anyone
+        interested can sign up at the front desk or through the community portal.
+      </p>
+      <p>
+        Finally, the annual food drive kicks off next month, with donation bins
+        placed at the community center, the library, and several local businesses.
+        Non-perishable items are preferred, and organizers are hoping to exceed
+        last year's total by twenty percent.
+      </p>
+    </article>
+  </section>
+
+  <!-- ============ ADMIN TABLE (Task 7) ============ -->
+  <section id="admin-table" class="admin-section">
+    <h2>Events Admin Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Farmers Market Weekend</td>
+          <td>Every Saturday</td>
+          <td>Central Park</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>Neighborhood Cleanup Drive</td>
+          <td>Sep 12, 2026</td>
+          <td>Riverside Green</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>Autumn Street Festival</td>
+          <td>Oct 3, 2026</td>
+          <td>Main Street</td>
+          <td>Planning</td>
+        </tr>
+        <tr>
+          <td>Winter Charity Gala</td>
+          <td>Dec 5, 2026</td>
+          <td>Community Hall</td>
+          <td>Planning</td>
+        </tr>
+        <tr>
+          <td>Spring Plant Swap</td>
+          <td>Mar 14, 2027</td>
+          <td>Botanical Garden</td>
+          <td>Draft</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact">
+    <p>&copy; 2026 Local Community Event Portal. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Use</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
